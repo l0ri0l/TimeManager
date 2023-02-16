@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 using TimeManager.BLL.DTO;
 using TimeManager.BLL.Infrastruction;
 using TimeManager.BLL.Interfaces;
@@ -31,15 +32,21 @@ namespace TimeManager.WEB.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddComment(TaskCommentsDTO comment, Guid taskId)
+        public JsonResult AddComment(byte CommentType, string CommentContent, Guid taskId)
         {
             var task = taskService.FindTask(taskId);
             if (task == null)
                 throw new ValidationExeption("No task", "");
 
             Guid commentId = Guid.NewGuid();
-            comment.Id = commentId;
-            comment.TaskId = taskId;
+
+            var comment = new TaskCommentsDTO()
+            {
+                Id = commentId,
+                TaskId = taskId,
+                CommentType = CommentType,
+                Content = CommentContent
+            };
 
             taskService.AddComment(comment, taskId);
             
@@ -54,22 +61,22 @@ namespace TimeManager.WEB.Controllers
         }
 
         [HttpPost]
-        public JsonResult EditComment(TaskCommentsDTO comment)
+        public JsonResult EditComment(byte CommentType, string CommentContent, Guid commentId)
         {
-            var task = taskService.FindTask(comment.TaskId);
-            if (task == null)
-                throw new ValidationExeption("No task", "");
-
-            var commentDTO = taskService.GetComment(comment.Id);
+            var commentDTO = taskService.GetComment(commentId);
             if (commentDTO == null)
                 throw new ValidationExeption("No comment", "");
 
-            commentDTO.Content = comment.Content;
-            commentDTO.CommentType = comment.CommentType;
+            var task = taskService.FindTask(commentDTO.TaskId);
+            if (task == null)
+                throw new ValidationExeption("No task", "");
+
+            commentDTO.Content = CommentContent;
+            commentDTO.CommentType = CommentType;
 
             taskService.EditComment(commentDTO);
 
-            var updatedCommentDTO = taskService.GetComment(comment.Id);
+            var updatedCommentDTO = taskService.GetComment(commentId);
             if (updatedCommentDTO == null)
                 throw new ValidationExeption("No comment", "");
 
