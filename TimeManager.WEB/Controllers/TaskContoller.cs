@@ -9,8 +9,8 @@ namespace TimeManager.WEB.Controllers
 {
     public class TaskContoller : Controller
     {
-        private IProjectService projectService;
-        private ITaskService taskService;
+        private readonly IProjectService projectService;
+        private readonly ITaskService taskService;
 
         public TaskContoller(ITaskService taskService)
         {

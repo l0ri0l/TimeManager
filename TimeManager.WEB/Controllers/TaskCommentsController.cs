@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
 using TimeManager.BLL.DTO;
 using TimeManager.BLL.Infrastruction;
 using TimeManager.BLL.Interfaces;
@@ -11,7 +9,7 @@ namespace TimeManager.WEB.Controllers
 {
     public class TaskCommentsController : Controller
     {
-        private ITaskService taskService;
+        private readonly ITaskService taskService;
 
         public TaskCommentsController(ITaskService taskService)
         {

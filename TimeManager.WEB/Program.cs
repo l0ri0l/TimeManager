@@ -1,14 +1,7 @@
-using Ninject.Modules;
-using Ninject;
-using TimeManager.BLL.Infrastruction;
-using System.Web.Mvc;
-using Ninject.Web.WebApi;
 using TimeManager.DAL.Interfaces;
 using TimeManager.DAL.Repositories;
 using TimeManager.BLL.Interfaces;
 using TimeManager.BLL.Services;
-using Ninject.Activation;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

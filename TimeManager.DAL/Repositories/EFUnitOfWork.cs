@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeManager.DAL.EF;
+﻿using TimeManager.DAL.EF;
 using TimeManager.DAL.Entities;
 using TimeManager.DAL.Interfaces;
 
@@ -28,10 +22,7 @@ namespace TimeManager.DAL.Repositories
         {
             get
             {
-                if(projectRepository == null)
-                {
-                    projectRepository = new ProjectRepository(db);
-                }
+                projectRepository ??= new ProjectRepository(db);
                 return projectRepository;
             }
         }
@@ -52,10 +43,7 @@ namespace TimeManager.DAL.Repositories
         {
             get
             {
-                if (taskCommentsRepository == null)
-                {
-                    taskCommentsRepository = new TaskCommentsRepository(db);
-                }
+                taskCommentsRepository ??= new TaskCommentsRepository(db);
                 return taskCommentsRepository;
             }
         }

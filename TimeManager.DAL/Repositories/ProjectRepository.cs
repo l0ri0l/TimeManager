@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeManager.DAL.EF;
+﻿using TimeManager.DAL.EF;
 using TimeManager.DAL.Entities;
 using TimeManager.DAL.Interfaces;
 
@@ -11,7 +6,7 @@ namespace TimeManager.DAL.Repositories
 {
     public class ProjectRepository : IRepository<Project>
     {
-        private TasksContext db;
+        private readonly TasksContext db;
 
         public ProjectRepository(TasksContext context)
         {

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TimeManager.BLL.DTO;
 using TimeManager.BLL.Interfaces;
@@ -9,7 +8,7 @@ namespace TimeManager.WEB.Controllers
 {
     public class ProjectsController : Controller
     {
-        IProjectService projectService;
+        private readonly IProjectService projectService;
 
         public ProjectsController(IProjectService projectService)
         {
