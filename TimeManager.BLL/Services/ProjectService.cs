@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TimeManager.BLL.DTO;
-using TimeManager.BLL.Infrastruction;
+using TimeManager.BLL.Infrastructure;
 using TimeManager.BLL.Interfaces;
 using TimeManager.DAL.Entities;
 using TimeManager.DAL.Interfaces;

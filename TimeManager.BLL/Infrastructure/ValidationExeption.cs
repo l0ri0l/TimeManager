@@ -1,5 +1,5 @@
 ﻿
-namespace TimeManager.BLL.Infrastruction
+namespace TimeManager.BLL.Infrastructure
 {
     public class ValidationExeption : Exception
     {

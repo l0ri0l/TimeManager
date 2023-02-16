@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TimeManager.BLL.DTO;
-using TimeManager.BLL.Infrastruction;
+using TimeManager.BLL.Infrastructure;
 using TimeManager.BLL.Interfaces;
 using TimeManager.WEB.Models;
 
